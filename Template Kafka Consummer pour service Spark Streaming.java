@@ -57,7 +57,7 @@
         )
       }
     }catch {
-      case ex : Exception => logger.error(s"An Exception occured when getting the kafka consumer context :\n${ex.printStackTrace()}")
+      case ex : Exception => logger.error(s"An Exception occured when getting the kafka consumer new context:\n${ex.printStackTrace()}")
     }
 
     kafkaConsumer
