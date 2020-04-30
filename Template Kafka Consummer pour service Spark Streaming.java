@@ -46,17 +46,7 @@
 
     logger.info("Getting kafkaConsumer Object...")
 
-    try{
-      if(kafkaConsumer == null){
-        logger.warn("The kafkaConsumer Object is null, initializing a new one...")
-        val kafkaConsumerParams = getKafkaConsumerParams(kafkaBootstrapServers, kafkaConsumerGroupId, kafkaConsumerAutoOffsetReset, zookeeperServers)
-        kafkaConsumer = KafkaUtils.createDirectStream[String, String](
-          sparkStreamingContext,
-          PreferConsistent,
-          Subscribe[String, String](kafkaConsumerTopic, kafkaConsumerParams)
-        )
-      }
-    }catch {
+
       case ex : Exception => logger.error(s"An Exception occured when getting the kafka consumer new context:\n${ex.printStackTrace()}")
     }
 
